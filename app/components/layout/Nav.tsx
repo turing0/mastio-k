@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import DialogDemo from './radix/Dialog';
-import NavItem from './NavItem';
-import PopoverDemo from './radix/PopoverDemo';
+import DialogDemo from '../radix/Dialog';
+import NavItem from '../NavItem';
+import PopoverDemo from '../radix/PopoverDemo';
 
 import { BsMastodon } from "react-icons/bs";
 import { FaBookmark, FaCompass, FaUser, FaUsers } from 'react-icons/fa'; 
@@ -15,7 +15,7 @@ import {
 	HiOutlineBookmark,
 	HiOutlineUser,
 } from 'react-icons/hi2';
-import AccountNavItem from './AccountNavItem';
+import AccountNavItem from '../AccountNavItem';
 
 interface NavLinkItem {
 	href: string;
@@ -108,6 +108,9 @@ const Nav = () => (
 				<span>icon</span> 
 				<span>text</span>
 			</NavItem> */}
+			<NavItem href={`/explore`} width="inline" size="default">
+				<HiHashtag className="w-6 h-6" />
+			</NavItem>
 			<NavItem href={`/${server ? server : defaultServer}/public/local`} width="inline" size="default">
 				<FaUsers className="w-6 h-6" />
 			</NavItem>

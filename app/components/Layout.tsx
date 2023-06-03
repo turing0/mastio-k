@@ -1,11 +1,11 @@
 "use client";
 
 import Footer from "./Footer";
-import Nav from "./Nav";
+import Nav from "./layout/Nav";
 import Panel from "./Panel";
 import PanelItem from "./PanelItem";
 import PanelItemTrends from "./PanelItemTrends";
-import Search from "./Search";
+import Search from "./layout/Search";
 
 export interface LayoutProps {
     children: React.ReactNode;

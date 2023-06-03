@@ -1,4 +1,4 @@
-import Nav from './components/Nav'
+import Nav from './components/layout/Nav'
 import Header from './components/Header'
 import Tabs from './components/radix/Tabs'
 import Panel from './components/Panel'
