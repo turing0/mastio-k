@@ -54,7 +54,7 @@ const PopoverDemo = () => (
 			<PopoverPrimitive.Content
 				align="start"
 				side="top"
-				sideOffset={-0}
+				sideOffset={5}
 				alignOffset={0}
 				className="PopoverContent overflow-hidden w-80 rounded-xl shadow-xl border border-slate-200 bg-white"
 			>
