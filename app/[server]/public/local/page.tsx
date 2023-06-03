@@ -15,7 +15,7 @@ const LocalView = ({ params }: { params: LocalViewParams }) => {
 
     return (
       <>
-        <title>Local Timeline</title>
+        <title>Local Timeline | Mastio</title>
 
         <Header title="Local Timeline" />
         <Feed server={server} type='local' />

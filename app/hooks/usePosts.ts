@@ -30,7 +30,7 @@ const usePosts = (server?: string, userId?: string, type?: string, maxId?: strin
         url = `https://${server}/api/v1/accounts/${userId}/statuses?limit=30&exclude_replies=true`;
     }
     if (maxId) {
-        url = url + `&${maxId}`;
+        url = url + `&max_id=${maxId}`;
     }
     const { data, error, isLoading, mutate } = useSWR(
         server ? url : null, 

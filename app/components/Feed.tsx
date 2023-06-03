@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { Suspense } from 'react';
 import Post from './Post';
 import usePosts from '../hooks/usePosts';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 interface PostItem {
 	name: string;
@@ -52,29 +53,6 @@ const items: PostItem[] = [
 		src: 'https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-1.2.1&w=128&h=128&dpr=2&q=80',
 		initials: 'JD',
 	},
-	{
-		name: 'Jessica Doe',
-		username: 'jessicadoe',
-		following: '866',
-		followers: '1001',
-		content: 'Tailwind CSS is insane',
-		description:
-			'Should designers code. Should you rename your Figma layers is the 1 billion…',
-		date: '3h',
-		src: 'https://images.unsplash.com/photo-1614644147798-f8c0fc9da7f6?ixlib=rb-1.2.1&w=128&h=128&dpr=2&q=80',
-		initials: 'JD',
-	},
-	{
-		name: 'Joe Doe',
-		username: 'joedoe',
-		following: '668',
-		followers: '1985',
-		content: 'Next JS documentation is so good',
-		description: 'Next JS enthusiast',
-		date: '4h',
-		src: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&w=128&h=128&dpr=2&q=80',
-		initials: 'JD',
-	},
 ];
 
 interface PostFeedProps {
@@ -84,46 +62,63 @@ interface PostFeedProps {
   }
 
 const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
+	const [maxId, setMaxId] = useState<string | undefined>(undefined);
+	const [allPosts, setAllPosts] = useState([]);
+	const { data: posts = [] } = usePosts(server, userId, type, maxId);
 
-	const { data: posts = [] } = usePosts(server, userId, type);
+    const fetchMoreData = () => {
+        if (posts.length > 0) {
+            const lastPostId = posts[posts.length - 1].id;
+			setMaxId(lastPostId);
+        }
+    };
+	useEffect(() => {
+		setAllPosts(allPosts.concat(posts));
+	}, [JSON.stringify(posts)]);
 
 	return (
+		<InfiniteScroll
+            dataLength={allPosts.length}
+            next={fetchMoreData}
+            hasMore={true}
+            loader={Loading()}
+        >
 		<Suspense fallback={<Loading />}>
 			<ul className="[&_p:last-child]:text-slate-500 [&_p:first-child]:text-lg divide-y divide-slate-200">
-				{posts.map((post: Record<string, any>,) => (
-						<li key={post.id} className="p-4 hover:bg-gray-100 transition">
+				{allPosts.map((post: Record<string, any>, index: number) => (
+						<li key={index} className="p-4 hover:bg-gray-100 transition">
 							<Post
 								data={post}
 								server={server}
 							>
-<div style={{ 
-  display: 'flex', 
-  flexWrap: 'wrap', 
-  justifyContent: 'space-between' 
-}}>
-  {
-    post?.media_attachments?.length > 0 && post?.media_attachments.map((attachment: { preview_url: string }, index: number) => (
-      <div style={{ 
-        flexBasis: post?.media_attachments.length === 1 ? '100%' : 'calc(50% - 10px)',  // 如果只有一张图片，占100%宽度，否则占50%宽度减去左右间距
-        margin: '5px',  // 上下左右的间距都为5px
-        height: post?.media_attachments.length === 1 ? '400px' : '300px',  // 如果只有一张图片，高度为600px，否则为300px
-        overflow: 'hidden'  // 如果图片超出容器，将其隐藏
-      }}>
-        <img
-          key={index}
-          style={{ 
-            objectFit: 'cover',
-            width: '100%',
-            height: '100%'
-          }}
-          className="rounded-3xl"
-          src={attachment.preview_url}
-          alt={`Attachment ${index + 1}`}
-        />
-      </div>
-    ))
-  }
-</div>
+								<div style={{ 
+								display: 'flex', 
+								flexWrap: 'wrap', 
+								justifyContent: 'space-between' 
+								}}>
+								{
+									post?.media_attachments?.length > 0 && post?.media_attachments.map((attachment: { preview_url: string }, id: number) => (
+									<div style={{ 
+										flexBasis: post?.media_attachments.length === 1 ? '100%' : 'calc(50% - 10px)',  // 如果只有一张图片，占100%宽度，否则占50%宽度减去左右间距
+										margin: '5px',  // 上下左右的间距都为5px
+										height: post?.media_attachments.length === 1 ? '400px' : '300px',  // 如果只有一张图片，高度为600px，否则为300px
+										overflow: 'hidden'  // 如果图片超出容器，将其隐藏
+									}}>
+										<img
+										key={id}
+										style={{ 
+											objectFit: 'cover',
+											width: '100%',
+											height: '100%'
+										}}
+										className="rounded-3xl"
+										src={attachment.preview_url}
+										alt={``}
+										/>
+									</div>
+									))
+								}
+								</div>
 
 							</Post>
 						</li>
@@ -131,11 +126,12 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 				)}
 			</ul>
 		</Suspense>
+		</InfiniteScroll>
 	)
 }
 
 export default Feed;
 
 function Loading() {
-	return <h2>Loading...</h2>;
+	return <h2 className="flex justify-center items-center">Loading...</h2>;
 }

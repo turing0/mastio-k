@@ -13,6 +13,7 @@ const PublicView = ({ params }: { params: PublicViewParams }) => {
 
     return (
       <>
+        <title>Federated Timeline | Mastio</title>
         <Header title="Federated Timeline" />
         <Feed server={server} type='public' />
         {/* <PostFeed server={server} type="public" /> */}

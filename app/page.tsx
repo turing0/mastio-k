@@ -9,7 +9,7 @@ import Footer from './components/Footer'
 export default function Home() {
   return (
     <>
-		<title>Mastio K</title>
+		<title>Mastio</title>
 
 		
 		<Header title="Home" />
