@@ -101,7 +101,7 @@ const Nav = () => (
 	</header>
 
 	{/* mobile */}
-	<header className="sm:hidden flex fixed bottom-0 left-0 right-0 bg-white">
+	<header className="sm:hidden flex fixed bottom-0 left-0 right-0 bg-white" style={{ zIndex: 999 }}>
 		<div className="container mx-auto flex items-center justify-between px-4 py-3">
 			{/* nav items */}
 			{/* <NavItem href="#" width="full" size="small">
