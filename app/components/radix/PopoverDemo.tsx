@@ -31,8 +31,8 @@ const items: NavLinkItem[] = [
 		icon: <HiListBullet className="w-6 h-6" />,
 	},
 	{
-		href: '/twitter-circle',
-		text: 'Twitter Circle',
+		href: '/circle',
+		text: 'Circle',
 		icon: <HiOutlineUserGroup className="w-6 h-6" />,
 	},
 ];

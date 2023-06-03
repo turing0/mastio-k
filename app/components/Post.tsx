@@ -83,12 +83,14 @@ const Post = ({
 					<div className="flex flex-1 gap-x-1 text-sm">
 						<span className="text-slate-900 font-bold cursor-pointer">{data?.account?.display_name}</span>
 						<span className="text-slate-600 font-medium cursor-pointer">@{data?.account?.acct}</span>·
-						<span className="text-slate-600 font-medium">{createdAt}</span>
+						<span className="text-slate-600 font-medium whitespace-nowrap">{createdAt}</span>
 					</div>
 					<div className="">
 						<DropdownMenuDemo />
 					</div>
 				</div>
+
+
 				<div className="text-sm text-slate-900 mb-4" dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }}>
 					{/* {data?.content} */}
 					{/* <div dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }} /> */}

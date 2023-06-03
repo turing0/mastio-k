@@ -69,37 +69,6 @@ const items: NavLinkItem[] = [
 	},
 ];
 
-// const Nav = () => (
-// 	<header className="hidden sm:flex w-24 xl:col-span-2">
-// 		<div className="flex flex-1 xl:w-60 flex-col fixed h-full">
-// 			<div className="flex flex-col flex-1">
-// 				<NavItem href="/home" width="inline" size="default">
-// 					<SiTwitter className="w-6 h-6" />
-// 				</NavItem>
-// 				{items.map(({ href, text, icon }, i) => (
-// 					<div
-// 						key={`header-${i}`}
-// 						// value={`item-${i + 1}`}
-// 						className="rounded-lg focus:outline-none overflow-hidden"
-// 					>
-// 						<NavItem href={href} width="inline" size="default">
-// 							{icon}
-// 							<div className="hidden xl:inline-flex flex-none text-lg font-medium">
-// 								{text}
-// 							</div>
-// 						</NavItem>
-// 					</div>
-// 				))}
-// 				{/* <PopoverDemo /> */}
-// 				{/* <DialogDemo /> */}
-// 			</div>
-// 			<div>
-// 				<AccountNavItem />
-// 			</div>
-// 		</div>
-// 	</header>
-
-// );
 const Nav = () => (
 	<>
 	<header className="hidden sm:flex w-24 xl:col-span-2">
@@ -135,10 +104,19 @@ const Nav = () => (
 	<header className="sm:hidden flex fixed bottom-0 left-0 right-0 bg-white">
 		<div className="container mx-auto flex items-center justify-between px-4 py-3">
 			{/* nav items */}
-			<NavItem href="#" width="full" size="small">
+			{/* <NavItem href="#" width="full" size="small">
 				<span>icon</span> 
 				<span>text</span>
+			</NavItem> */}
+			<NavItem href={`/${server ? server : defaultServer}/public/local`} width="inline" size="default">
+				<FaUsers className="w-6 h-6" />
 			</NavItem>
+			<NavItem href={`/${server ? server : defaultServer}/public`} width="inline" size="default">
+				<BiWorld className="w-6 h-6" />
+			</NavItem>
+			<div className="flex items-center justify-center">
+				<PopoverDemo />
+			</div>
 		</div>  
 	</header>
 	</>
