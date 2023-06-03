@@ -101,7 +101,7 @@ const Nav = () => (
 	</header>
 
 	{/* mobile */}
-	<header className="sm:hidden flex fixed bottom-0 left-0 right-0 bg-white" style={{ zIndex: 999 }}>
+	<header className="sm:hidden flex fixed bottom-0 left-0 right-0 bg-white" style={{ zIndex: 100 }}>
 		<div className="container mx-auto flex items-center justify-between px-4 py-3">
 			{/* nav items */}
 			{/* <NavItem href="#" width="full" size="small">
@@ -114,7 +114,7 @@ const Nav = () => (
 			<NavItem href={`/${server ? server : defaultServer}/public`} width="inline" size="default">
 				<BiWorld className="w-6 h-6" />
 			</NavItem>
-			<div className="flex items-center justify-center">
+			<div className="flex items-center justify-center" style={{ zIndex: 110 }}>
 				<PopoverDemo />
 			</div>
 		</div>  
