@@ -9,8 +9,7 @@ import Footer from './components/Footer'
 export default function Home() {
   return (
     <>
-		<title>Mastio</title>
-
+		<title>Home | Mastio</title>
 		
 		<Header title="Home" />
 		<Tabs />

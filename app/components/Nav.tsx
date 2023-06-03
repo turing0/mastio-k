@@ -33,14 +33,14 @@ const items: NavLinkItem[] = [
 		icon: <HiOutlineHome className="w-6 h-6" />,
 	},
 	{
-		href: '/explore',
-		text: 'Explore',
-		icon: <HiHashtag className="w-6 h-6" />,
-	},
-	{
 		href: '/notifications',
 		text: 'Notifications',
 		icon: <HiOutlineBell className="w-6 h-6" />,
+	},
+	{
+		href: '/explore',
+		text: 'Explore',
+		icon: <HiHashtag className="w-6 h-6" />,
 	},
 	{
 		href: `/${server ? server : defaultServer}/public/local`,
