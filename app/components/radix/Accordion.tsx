@@ -43,13 +43,13 @@ const items: AccordionItem[] = [
 				<NavItem href="/" width="full" size="default">
 					<HiOutlineIdentification className="w-4 h-4" />
 					<div className="inline-flex flex-none text-sm font-medium">
-						Twitter for Professionals
+						Professionals
 					</div>
 				</NavItem>
 				<NavItem href="/" width="full" size="default">
 					<HiOutlineFilm className="w-4 h-4" />
 					<div className="inline-flex flex-none text-sm font-medium">
-						Twitter Ads
+						Ads
 					</div>
 				</NavItem>
 				<NavItem href="/" width="full" size="default">

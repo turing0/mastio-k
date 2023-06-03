@@ -71,9 +71,10 @@ const Post = ({
 		<div onClick={goToPost}
 			className="flex flex-1 gap-x-4 cursor-pointer transition" 
 		>
-			<div className="flex-shrink-0">
+			<div onClick={(ev: any) => {ev.stopPropagation();}} className="flex-shrink-0">
 				<HoverCardDemo
 					src={data?.account?.avatar}
+					onAvatarClick={goToUser}
 					alt={data?.account?.display_name}
 					initials={data?.account?.display_name}
 					name={data?.account?.display_name}

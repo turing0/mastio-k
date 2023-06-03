@@ -13,6 +13,7 @@ interface Props {
 	description: string;
 	following: string;
 	followers: string;
+	onAvatarClick: (ev: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const HoverCardDemo = ({
@@ -24,17 +25,23 @@ const HoverCardDemo = ({
 	description,
 	following,
 	followers,
+	onAvatarClick
 }: Props) => (
 	<HoverCardPrimitive.Root>
 		<HoverCardPrimitive.Trigger asChild>
-			<a
-				className="ImageTrigger inline-flex h-12 w-12 items-center justify-center rounded-full overflow-hidden bg-white"
-				href="https://twitter.com/royquilor"
-				target="_blank"
-				rel="noreferrer noopener"
-			>
+			<div onClick={onAvatarClick}>
 				<Avatar src={src} alt={alt} initials={initials} />
-			</a>
+			</div>
+			{/* <div onClick={onAvatarClick}>
+				<a
+					className="ImageTrigger inline-flex h-12 w-12 items-center justify-center rounded-full overflow-hidden bg-white"
+					href={href}
+					rel="noreferrer noopener"
+				>
+					<Avatar src={src} alt={alt} initials={initials} />
+				</a>
+			</div> */}
+			
 		</HoverCardPrimitive.Trigger>
 		<HoverCardPrimitive.Portal>
 			<HoverCardPrimitive.Content
@@ -49,7 +56,9 @@ const HoverCardDemo = ({
 			>
 				<div className="w-full flex flex-col gap-y-2">
 					<div className="flex justify-between items-start">
-						<Avatar src={src} alt={alt} initials={initials} />
+						<div onClick={onAvatarClick} className="cursor-pointer">
+							<Avatar src={src} alt={alt} initials={initials} />
+						</div>
 						<div>
 							<Button intent="outline" size="default">
 								Following

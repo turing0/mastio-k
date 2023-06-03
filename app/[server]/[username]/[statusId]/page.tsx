@@ -43,7 +43,17 @@ const StatusView = ({ params }: { params: StatusViewParams }) => {
 
         <ul className="[&_p:last-child]:text-slate-500 [&_p:first-child]:text-lg divide-y divide-slate-200">
           <li className="p-4">
-            <BigPost server={server} statusId={statusId} data={fetchedPost} />
+            <BigPost server={server} statusId={statusId} data={fetchedPost}>
+              {fetchedPost?.media_attachments?.length > 0 && (
+								<img
+									// fill={true}
+									style={{ objectFit: 'cover' }}
+									className="rounded-3xl"
+									src={`${fetchedPost?.media_attachments[0].url}`}
+									alt=""
+								/>
+								)}
+            </BigPost>
           </li>
 			  </ul>
 

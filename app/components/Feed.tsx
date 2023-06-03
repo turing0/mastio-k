@@ -97,6 +97,22 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 								server={server}
 							>
 								{/* {image} */}
+								{post?.media_attachments?.length > 0 && (
+								// <Image
+								// 	fill={true}
+								// 	style={{ objectFit: 'cover' }}
+								// 	className="rounded-3xl"
+								// 	src={`${post?.media_attachments[0].url}`}
+								// 	alt="Gradient"
+								// />
+								<img
+									// fill={true}
+									style={{ objectFit: 'cover' }}
+									className="rounded-3xl"
+									src={`${post?.media_attachments[0].preview_url}`}
+									alt="Gradient"
+								/>
+								)}
 							</Post>
 						</li>
 					),

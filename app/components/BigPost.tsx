@@ -49,6 +49,11 @@ const BigPost = ({
     //     server = currentServer!;
     // }
 	
+	const goToUser = useCallback((ev: any) => {
+        ev.stopPropagation();
+        router.push(`/${server}/@${data.account.acct}`)
+    }, [router, data, server]);
+
 	const goToPost = useCallback(() => {
         router.push(`/${server}/@${data.account.username}/${data.id}`);
     }, [router, data, server]);
@@ -63,10 +68,11 @@ const BigPost = ({
 
 	
 	return (
-		<div className="flex flex-1 gap-x-4" onClick={goToPost}>
-			<div className="flex-shrink-0">
+		<div className="flex flex-1 gap-x-4">
+			<div onClick={(ev: any) => {ev.stopPropagation();}} className="flex-shrink-0 cursor-pointer" >
 				<HoverCardDemo
 					src={data?.account?.avatar}
+					onAvatarClick={goToUser}
 					alt={data?.account?.display_name}
 					initials={data?.account?.display_name}
 					name={data?.account?.display_name}
@@ -79,9 +85,15 @@ const BigPost = ({
 			<div className="flex flex-col flex-1">
 				<div className="flex flex-1">
 					<div className="flex flex-1 gap-x-1 text-sm">
-						<span className="text-slate-900 font-bold">{data?.account?.display_name}</span>
-						<span className="text-slate-600 font-medium">@{data?.account?.acct}</span>·
-						<span className="text-slate-600 font-medium">{createdAt}</span>
+						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer">
+							{data?.account?.display_name}
+						</span>
+						<span className="text-slate-600 font-medium">
+							@{data?.account?.acct}
+						</span>·
+						<span className="text-slate-600 font-medium">
+							{createdAt}
+						</span>
 					</div>
 					<div className="">
 						<DropdownMenuDemo />
