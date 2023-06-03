@@ -1,8 +1,8 @@
 'use client';
 
-import BigPost from "@/app/components/BigPost";
+import BigPost from "@/app/components/posts/BigPost";
 import Header from "@/app/components/Header";
-import Post from "@/app/components/Post";
+import Post from "@/app/components/posts/Post";
 import usePost from "@/app/hooks/usePost";
 import { Suspense } from "react";
 import { ClipLoader } from "react-spinners";

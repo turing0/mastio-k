@@ -8,10 +8,10 @@ import {
 	HiOutlineChartBarSquare,
 	HiOutlineBookmark,
 } from 'react-icons/hi2';
-import HoverCardDemo from './radix/HoverCard';
-import DropdownMenuDemo from './radix/DropdownMenu';
+import HoverCardDemo from '../radix/HoverCard';
+import DropdownMenuDemo from '../radix/DropdownMenu';
 import { useRouter } from 'next/navigation';
-import useLoginModal from '../hooks/useLoginModal';
+import useLoginModal from '../../hooks/useLoginModal';
 import { formatDistanceToNowStrict } from 'date-fns';
 
 interface Props {

@@ -1,6 +1,6 @@
 'use client';
 
-import Feed from "@/app/components/Feed";
+import Feed from "@/app/components/posts/Feed";
 import Header from "@/app/components/Header";
 
 interface PublicViewParams {

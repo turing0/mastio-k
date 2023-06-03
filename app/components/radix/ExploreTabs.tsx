@@ -2,10 +2,13 @@
 
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import clsx from 'clsx';
-import TweetForm from '../TweetForm';
-import Feed from '../Feed';
+import OffsetFeed from '../posts/OffsetFeed';
 
-const ExploreTabs = () => (
+type ExploreTabsProps = {
+    server: string;
+}
+
+const ExploreTabs = ({ server }: ExploreTabsProps) => (
 	<TabsPrimitive.Root className="TabsRoot" defaultValue="tab1">
 		<TabsPrimitive.List
 			className="TabsList flex w-full bg-white border-b border-b-slate-200"
@@ -73,17 +76,16 @@ const ExploreTabs = () => (
 			</TabsPrimitive.Trigger>
 		</TabsPrimitive.List>
 		<TabsPrimitive.Content value="tab1" className="TabsContent ">
-			{/* <TweetForm width="default" /> */}
-			<Feed type="home" />
+			<OffsetFeed server={server} type="trends" />
 		</TabsPrimitive.Content>
 		<TabsPrimitive.Content value="tab2" className="TabsContent ">
-			{/* <TweetForm width="default" /> */}
+
 		</TabsPrimitive.Content>
 		<TabsPrimitive.Content value="tab3" className="TabsContent ">
-			{/* <TweetForm width="default" /> */}
+
 		</TabsPrimitive.Content>
         <TabsPrimitive.Content value="tab4" className="TabsContent ">
-            
+
 		</TabsPrimitive.Content>
 	</TabsPrimitive.Root>
 );

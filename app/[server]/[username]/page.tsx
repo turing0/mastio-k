@@ -1,6 +1,6 @@
 'use client';
 
-import Feed from "@/app/components/Feed";
+import Feed from "@/app/components/posts/Feed";
 import Header from "@/app/components/Header";
 import UserBio from "@/app/components/users/UserBio";
 import UserHero from "@/app/components/users/UserHero";

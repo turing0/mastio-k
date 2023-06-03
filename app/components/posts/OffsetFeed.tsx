@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { ReactNode, useEffect, useState } from 'react';
 import { Suspense } from 'react';
 import Post from './Post';
-import usePosts from '../hooks/usePosts';
+import usePosts from '../../hooks/usePosts';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 interface PostItem {
@@ -61,15 +61,14 @@ interface PostFeedProps {
 	type?: string;
   }
 
-const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
-	const [maxId, setMaxId] = useState<string | undefined>(undefined);
+const OffsetFeed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
+	const [offset, setOffset] = useState(0);
 	const [allPosts, setAllPosts] = useState([]);
-	const { data: posts = [] } = usePosts(server, userId, type, maxId);
+	const { data: posts = [] } = usePosts(server, userId, type, undefined, offset);
 
     const fetchMoreData = () => {
         if (posts.length > 0) {
-            const lastPostId = posts[posts.length - 1].id;
-			setMaxId(lastPostId);
+			setOffset(offset + 20);
         }
     };
 	useEffect(() => {
@@ -129,7 +128,7 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 	)
 }
 
-export default Feed;
+export default OffsetFeed;
 
 function Loading() {
 	return <h2 className="flex justify-center items-center">Loading...</h2>;
