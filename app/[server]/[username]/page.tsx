@@ -1,6 +1,10 @@
 'use client';
 
+import Feed from "@/app/components/Feed";
 import Header from "@/app/components/Header";
+import UserBio from "@/app/components/users/UserBio";
+import UserHero from "@/app/components/users/UserHero";
+import useUser from "@/app/hooks/useUser";
 // import PostFeed from "@/app/components/posts/PostFeed";
 // import UserBio from "@/app/components/users/UserBio";
 // import UserHero from "@/app/components/users/UserHero";
@@ -19,7 +23,7 @@ const UserView = ({ params }: { params: UserViewParams }) => {
     // console.log(server, username);
     // const { userId } = router.query;
   
-    // const { data: fetchedUser, isLoading } = useUser(server, username);
+    const { data: fetchedUser, isLoading } = useUser(server, username);
 
     
     // if (isLoading || !fetchedUser) {
@@ -32,10 +36,10 @@ const UserView = ({ params }: { params: UserViewParams }) => {
   
     return (
       <>
-        {/* <Header showBackArrow title={fetchedUser?.display_name} /> */}
-        {/* <UserHero server={server as string} username={username as string} />
+        <Header showBackArrow title={fetchedUser?.display_name} />
+        <UserHero server={server as string} username={username as string} />
         <UserBio server={server as string} userId={username as string} />
-        <PostFeed server={server as string} userId={fetchedUser?.id as string} /> */}
+        <Feed server={server as string} userId={fetchedUser?.id as string} />
       </>
      );
   }

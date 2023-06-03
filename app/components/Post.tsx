@@ -48,7 +48,12 @@ const Post = ({
     // if (!server) {
     //     server = currentServer!;
     // }
-	
+
+	const goToUser = useCallback((ev: any) => {
+        ev.stopPropagation();
+        router.push(`/${server}/@${data.account.acct}`)
+    }, [router, data, server]);
+
 	const goToPost = useCallback(() => {
         router.push(`/${server}/@${data.account.username}/${data.id}`);
     }, [router, data, server]);
@@ -64,7 +69,7 @@ const Post = ({
 	
 	return (
 		<div onClick={goToPost}
-			className="flex flex-1 gap-x-4 transition" 
+			className="flex flex-1 gap-x-4 cursor-pointer transition" 
 		>
 			<div className="flex-shrink-0">
 				<HoverCardDemo
@@ -81,9 +86,15 @@ const Post = ({
 			<div className="flex flex-col flex-1">
 				<div className="flex flex-1">
 					<div className="flex flex-1 gap-x-1 text-sm">
-						<span className="text-slate-900 font-bold cursor-pointer">{data?.account?.display_name}</span>
-						<span className="text-slate-600 font-medium cursor-pointer">@{data?.account?.acct}</span>·
-						<span className="text-slate-600 font-medium whitespace-nowrap">{createdAt}</span>
+						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer">
+							{data?.account?.display_name}
+							</span>
+						<span className="text-slate-600 font-medium cursor-pointer">
+							@{data?.account?.acct}
+							</span>·
+						<span className="text-slate-600 font-medium whitespace-nowrap">
+							{createdAt}
+						</span>
 					</div>
 					<div className="">
 						<DropdownMenuDemo />
