@@ -3,7 +3,7 @@ import DialogDemo from './radix/Dialog';
 import NavItem from './NavItem';
 import PopoverDemo from './radix/PopoverDemo';
 
-import { SiTwitter } from 'react-icons/si';
+import { BsMastodon } from "react-icons/bs";
 import { FaBookmark, FaCompass, FaUser, FaUsers } from 'react-icons/fa'; 
 import { BiLogIn, BiLogOut, BiWorld, BiBookmark } from 'react-icons/bi';
 
@@ -75,7 +75,7 @@ const Nav = () => (
 		<div className="flex flex-1 xl:w-60 flex-col fixed h-full">
 			<div className="flex flex-col flex-1">
 				<NavItem href="/home" width="inline" size="default">
-					<SiTwitter className="w-6 h-6" />
+					<BsMastodon className="w-6 h-6" />
 				</NavItem>
 				{items.map(({ href, text, icon }, i) => (
 					<div

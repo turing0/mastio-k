@@ -91,7 +91,7 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 		<Suspense fallback={<Loading />}>
 			<ul className="[&_p:last-child]:text-slate-500 [&_p:first-child]:text-lg divide-y divide-slate-200">
 				{posts.map((post: Record<string, any>,) => (
-						<li key={post.id} className="p-4">
+						<li key={post.id} className="p-4 hover:bg-gray-100 transition">
 							<Post
 								data={post}
 								server={server}
