@@ -98,14 +98,13 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 								}}>
 								{
 									post?.media_attachments?.length > 0 && post?.media_attachments.map((attachment: { preview_url: string }, id: number) => (
-									<div style={{ 
+									<div key={id} style={{ 
 										flexBasis: post?.media_attachments.length === 1 ? '100%' : 'calc(50% - 10px)',  // 如果只有一张图片，占100%宽度，否则占50%宽度减去左右间距
 										margin: '5px',  // 上下左右的间距都为5px
 										height: post?.media_attachments.length === 1 ? '400px' : '300px',  // 如果只有一张图片，高度为600px，否则为300px
 										overflow: 'hidden'  // 如果图片超出容器，将其隐藏
 									}}>
 										<img
-										key={id}
 										style={{ 
 											objectFit: 'cover',
 											width: '100%',

@@ -61,7 +61,7 @@ const StatusView = ({ params }: { params: StatusViewParams }) => {
               }}>
                 {
                   fetchedPost?.media_attachments?.length > 0 && fetchedPost?.media_attachments.map((attachment: { preview_url: string }, id: number) => (
-                    <div style={{ 
+                    <div key={id} style={{ 
                       flexBasis: fetchedPost?.media_attachments.length === 1 ? '100%' : 'calc(50% - 10px)',  // 如果只有一张图片，占100%宽度，否则占50%宽度减去左右间距
                       margin: '5px',  // 上下左右的间距都为5px
                       height: fetchedPost?.media_attachments.length === 1 ? '600px' : '300px',  // 如果只有一张图片，高度为600px，否则为300px
