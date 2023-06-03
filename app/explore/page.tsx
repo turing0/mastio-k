@@ -6,7 +6,7 @@ export default function Home() {
 
     return (
         <>
-            <title>Home | Mastio</title>
+            <title>Explore | Mastio</title>
             
             <Header title="Explore" />
             <ExploreTabs server={server} />

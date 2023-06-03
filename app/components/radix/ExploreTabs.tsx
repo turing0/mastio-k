@@ -40,7 +40,7 @@ const ExploreTabs = ({ server }: ExploreTabsProps) => (
 				)}
 			>
 				<div className="py-4 relative h-full ">
-					<div>Hashtags</div>
+					<div>Tags</div>
 					<span className="h-1 w-full bg-transparent absolute left-0 bottom-0 rounded-full"></span>
 				</div>
 			</TabsPrimitive.Trigger>
@@ -68,25 +68,26 @@ const ExploreTabs = ({ server }: ExploreTabsProps) => (
 					'focus:radix-state-active:border-b-red',
 					'focus:z-10 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
 				)}
-			>
+			>   
 				<div className="py-4 relative h-full ">
 					<div>For you</div>
 					<span className="h-1 w-full bg-transparent absolute left-0 bottom-0 rounded-full"></span>
 				</div>
 			</TabsPrimitive.Trigger>
 		</TabsPrimitive.List>
-		<TabsPrimitive.Content value="tab1" className="TabsContent ">
+		<TabsPrimitive.Content value="tab1" title="Posts | Explore | Mastio" className="TabsContent ">
 			<OffsetFeed server={server} type="trends" />
 		</TabsPrimitive.Content>
-		<TabsPrimitive.Content value="tab2" className="TabsContent ">
+		<TabsPrimitive.Content value="tab2" title="Tags | Explore | Mastio" className="TabsContent ">
 
 		</TabsPrimitive.Content>
-		<TabsPrimitive.Content value="tab3" className="TabsContent ">
+		<TabsPrimitive.Content value="tab3" title="News | Explore | Mastio" className="TabsContent ">
 
 		</TabsPrimitive.Content>
-        <TabsPrimitive.Content value="tab4" className="TabsContent ">
+        <TabsPrimitive.Content value="tab4" title="For you | Explore | Mastio" className="TabsContent ">
 
 		</TabsPrimitive.Content>
+
 	</TabsPrimitive.Root>
 );
 
