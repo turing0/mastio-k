@@ -11,8 +11,8 @@ const ButtonStyles = cva(
 	{
 		variants: {
 			intent: {
-				primary: 'bg-slate-900 text-white border-transparent',
-				outline: 'bg-transparent text-slate-900 border-slate-200',
+				primary: 'bg-slate-900 text-white border-transparent hover:bg-slate-700',
+				outline: 'bg-transparent text-slate-900 border-slate-200 hover:bg-slate-200 hover:text-slate-700',
 			},
 			size: {
 				default: 'px-4 py-2 text-sm',

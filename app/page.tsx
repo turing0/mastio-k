@@ -1,12 +1,21 @@
-import Nav from './components/layout/Nav'
+'use client';
+
 import Header from './components/Header'
 import Tabs from './components/radix/Tabs'
 import Panel from './components/Panel'
 import PanelItemTrends from './components/PanelItemTrends'
-import PanelItem from './components/PanelItem'
-import Footer from './components/Footer'
+import { useCurrentUserContext } from './context/UserProvider'
 
 export default function Home() {
+  const defaultServer = "mstdn.social";
+
+  const {account: currentUser} = useCurrentUserContext();
+
+  if (!currentUser) {
+    console.log('go to default server');
+    // router.push(`/${defaultServer}/public/local`);
+  }
+  
   return (
     <>
 		<title>Home | Mastio</title>

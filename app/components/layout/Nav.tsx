@@ -84,7 +84,7 @@ const Nav = () => {
 		<header className="hidden sm:flex w-24 xl:col-span-2">
 			<div className="flex flex-1 xl:w-60 flex-col fixed h-full">
 				<div className="flex flex-col flex-1">
-					<NavItem href="/home" width="inline" size="default">
+					<NavItem href="/" width="inline" size="default">
 						<BsMastodon className="w-6 h-6" />
 					</NavItem>
 					{items.map(({ href, text, icon }, i) => (

@@ -11,7 +11,6 @@ interface LocalViewParams {
 
 const LocalView = ({ params }: { params: LocalViewParams }) => {
     const server = params.server;
-    console.log(server);
 
     return (
       <>

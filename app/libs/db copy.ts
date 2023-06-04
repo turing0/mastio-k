@@ -66,11 +66,3 @@ export async function deleteFirstKV(key: string): Promise<void> {
       console.error(error);
   }
 }
-
-async function saveKV(key: string, value: object[]) {
-  try {
-      await db.kv.put({ key, value });
-  } catch (error) {
-      console.error(error);
-  }
-}
