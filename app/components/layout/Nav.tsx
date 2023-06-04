@@ -3,6 +3,7 @@ import DialogDemo from '../radix/Dialog';
 import NavItem from '../NavItem';
 import PopoverDemo from '../radix/PopoverDemo';
 
+import { MdFavoriteBorder } from 'react-icons/md'; 
 import { BsMastodon } from "react-icons/bs";
 import { FaBookmark, FaCompass, FaUser, FaUsers } from 'react-icons/fa'; 
 import { RiEarthLine, RiGroup2Line } from 'react-icons/ri';
@@ -53,10 +54,15 @@ const items: NavLinkItem[] = [
 		text: 'Federated',
 		icon: <RiEarthLine className="w-6 h-6" />,
 	},
+	// {
+	// 	href: '/messages',
+	// 	text: 'Messages',
+	// 	icon: <HiOutlineEnvelope className="w-6 h-6" />,
+	// },
 	{
-		href: '/messages',
-		text: 'Messages',
-		icon: <HiOutlineEnvelope className="w-6 h-6" />,
+		href: '/favorites',
+		text: 'Favorites',
+		icon: <MdFavoriteBorder className="w-6 h-6" />,
 	},
 	{
 		href: '/bookmarks',
