@@ -5,8 +5,7 @@ import PopoverDemo from '../radix/PopoverDemo';
 
 import { BsMastodon } from "react-icons/bs";
 import { FaBookmark, FaCompass, FaUser, FaUsers } from 'react-icons/fa'; 
-import { BiLogIn, BiLogOut, BiWorld, BiBookmark } from 'react-icons/bi';
-import { RiGroup2Line } from 'react-icons/ri';
+import { RiEarthLine, RiGroup2Line } from 'react-icons/ri';
 
 import {
 	HiOutlineHome,
@@ -52,7 +51,7 @@ const items: NavLinkItem[] = [
 	{
 		href: `/${server ? server : defaultServer}/public`,
 		text: 'Federated',
-		icon: <BiWorld className="w-6 h-6" />,
+		icon: <RiEarthLine className="w-6 h-6" />,
 	},
 	{
 		href: '/messages',
@@ -108,7 +107,7 @@ const Nav = () => {
 		{/* mobile */}
 		<header className="sm:hidden flex fixed bottom-0 left-0 right-0 bg-white" style={{ zIndex: 100 }}>
 			<div className="container mx-auto flex items-center justify-between px-4 py-0 border border-gray-300" >
-			<div className="ml-6">
+			<div className="ml-5">
 				<NavItem onClick={() => setSelectedNavItem('explore')} href={`/explore`} width="inline" size="default">
 					<HiHashtag className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'explore' })} />
 				</NavItem>
@@ -117,9 +116,9 @@ const Nav = () => {
 					<RiGroup2Line className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'local' })} />
 				</NavItem>
 				<NavItem onClick={() => setSelectedNavItem('federated')} href={`/${server ? server : defaultServer}/public`} width="inline" size="default">
-					<BiWorld className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'federated' })} />
+					<RiEarthLine className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'federated' })} />
 				</NavItem>
-				<div className="flex items-center justify-center mr-6">
+				<div className="flex items-center justify-center mr-5">
 					<PopoverDemo />
 				</div>
 			</div>
