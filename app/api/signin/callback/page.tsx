@@ -13,13 +13,8 @@ export default function MyPage() {
   const {signIn} = useCurrentUserContext();
 
   const token = searchParams.get('token');
-  const server = searchParams.get('server') || null;
-  if (!server) {
-    toast.error('Please input a server!');
-    return 
-  }
-
-  const { data, error } = useVerifyCredentials(server, token!);
+  const server = searchParams.get('server');
+  const { data, error } = useVerifyCredentials(server!, token!);
 
   useEffect(() => {
     // async function fetchData() {
@@ -27,7 +22,7 @@ export default function MyPage() {
       // const {data} = await useVerifyCredentials(server, token!);
       // console.log('------signin data:', data);
       if (data) {
-        signIn(server, token!, data);
+        signIn(server!, token!, data);
         router.push('/');
 
         // signIn('credentials', {
