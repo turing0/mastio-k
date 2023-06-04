@@ -112,12 +112,12 @@ const Nav = () => {
 
 		{/* mobile */}
 		<header className="sm:hidden flex fixed bottom-0 left-0 right-0 bg-white" style={{ zIndex: 100 }}>
-			<div className="container mx-auto flex items-center justify-between px-4 py-0 border border-gray-300" >
-			<div className="ml-5">
-				<NavItem onClick={() => setSelectedNavItem('explore')} href={`/explore`} width="inline" size="default">
-					<HiHashtag className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'explore' })} />
-				</NavItem>
-			</div>
+			<div className="container mx-auto flex items-center justify-between px-4 py-0 border border-gray-300 h-12" >
+				<div className="ml-5">
+					<NavItem onClick={() => setSelectedNavItem('explore')} href={`/explore`} width="inline" size="default">
+						<HiHashtag className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'explore' })} />
+					</NavItem>
+				</div>
 				<NavItem onClick={() => setSelectedNavItem('local')} href={`/${server ? server : defaultServer}/public/local`} width="inline" size="default">
 					<RiGroup2Line className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'local' })} />
 				</NavItem>
