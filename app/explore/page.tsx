@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import ExploreTabs from "../components/radix/ExploreTabs";
 
 export default function Home() {
+    // TODO: get current
     const server = "mstdn.social";
 
     return (

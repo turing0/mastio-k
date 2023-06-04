@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import DialogDemo from '../radix/Dialog';
 import NavItem from '../NavItem';
 import PopoverDemo from '../radix/PopoverDemo';
@@ -6,6 +6,7 @@ import PopoverDemo from '../radix/PopoverDemo';
 import { BsMastodon } from "react-icons/bs";
 import { FaBookmark, FaCompass, FaUser, FaUsers } from 'react-icons/fa'; 
 import { BiLogIn, BiLogOut, BiWorld, BiBookmark } from 'react-icons/bi';
+import { RiGroup2Line } from 'react-icons/ri';
 
 import {
 	HiOutlineHome,
@@ -16,6 +17,7 @@ import {
 	HiOutlineUser,
 } from 'react-icons/hi2';
 import AccountNavItem from '../AccountNavItem';
+import clsx from 'clsx';
 
 interface NavLinkItem {
 	href: string;
@@ -45,7 +47,7 @@ const items: NavLinkItem[] = [
 	{
 		href: `/${server ? server : defaultServer}/public/local`,
 		text: 'Local',
-		icon: <FaUsers className="w-6 h-6" />,
+		icon: <RiGroup2Line className="w-6 h-6" />,
 	},
 	{
 		href: `/${server ? server : defaultServer}/public`,
@@ -69,60 +71,61 @@ const items: NavLinkItem[] = [
 	},
 ];
 
-const Nav = () => (
-	<>
-	<header className="hidden sm:flex w-24 xl:col-span-2">
-		<div className="flex flex-1 xl:w-60 flex-col fixed h-full">
-			<div className="flex flex-col flex-1">
-				<NavItem href="/home" width="inline" size="default">
-					<BsMastodon className="w-6 h-6" />
-				</NavItem>
-				{items.map(({ href, text, icon }, i) => (
-					<div
-						key={`header-${i}`}
-						// value={`item-${i + 1}`}
-						className="rounded-lg focus:outline-none overflow-hidden"
-					>
-						<NavItem href={href} width="inline" size="default">
-							{icon}
-							<div className="hidden xl:inline-flex flex-none text-lg font-medium">
-								{text}
-							</div>
-						</NavItem>
-					</div>
-				))}
-				{/* <PopoverDemo /> */}
-				{/* <DialogDemo /> */}
-			</div>
-			<div>
-				<AccountNavItem />
-			</div>
-		</div>
-	</header>
+const Nav = () => {
+	const [selectedNavItem, setSelectedNavItem] = useState("explore");
 
-	{/* mobile */}
-	<header className="sm:hidden flex fixed bottom-0 left-0 right-0 bg-white" style={{ zIndex: 100 }}>
-		<div className="container mx-auto flex items-center justify-between px-4 py-0 border border-gray-300">
-			{/* nav items */}
-			{/* <NavItem href="#" width="full" size="small">
-				<span>icon</span> 
-				<span>text</span>
-			</NavItem> */}
-			<NavItem href={`/explore`} width="inline" size="default">
-				<HiHashtag className="w-6 h-6" />
-			</NavItem>
-			<NavItem href={`/${server ? server : defaultServer}/public/local`} width="inline" size="default">
-				<FaUsers className="w-6 h-6" />
-			</NavItem>
-			<NavItem href={`/${server ? server : defaultServer}/public`} width="inline" size="default">
-				<BiWorld className="w-6 h-6" />
-			</NavItem>
-			<div className="flex items-center justify-center">
-				<PopoverDemo />
+	return (
+		<>
+		<header className="hidden sm:flex w-24 xl:col-span-2">
+			<div className="flex flex-1 xl:w-60 flex-col fixed h-full">
+				<div className="flex flex-col flex-1">
+					<NavItem href="/home" width="inline" size="default">
+						<BsMastodon className="w-6 h-6" />
+					</NavItem>
+					{items.map(({ href, text, icon }, i) => (
+						<div
+							key={`header-${i}`}
+							// value={`item-${i + 1}`}
+							className="rounded-lg focus:outline-none overflow-hidden"
+						>
+							<NavItem href={href} width="inline" size="default">
+								{icon}
+								<div className="hidden xl:inline-flex flex-none text-lg font-medium">
+									{text}
+								</div>
+							</NavItem>
+						</div>
+					))}
+					{/* <PopoverDemo /> */}
+					{/* <DialogDemo /> */}
+				</div>
+				<div>
+					<AccountNavItem />
+				</div>
 			</div>
-		</div>  
-	</header>
-	</>
-);
+		</header>
+
+		{/* mobile */}
+		<header className="sm:hidden flex fixed bottom-0 left-0 right-0 bg-white" style={{ zIndex: 100 }}>
+			<div className="container mx-auto flex items-center justify-between px-4 py-0 border border-gray-300" >
+			<div className="ml-6">
+				<NavItem onClick={() => setSelectedNavItem('explore')} href={`/explore`} width="inline" size="default">
+					<HiHashtag className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'explore' })} />
+				</NavItem>
+			</div>
+				<NavItem onClick={() => setSelectedNavItem('local')} href={`/${server ? server : defaultServer}/public/local`} width="inline" size="default">
+					<RiGroup2Line className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'local' })} />
+				</NavItem>
+				<NavItem onClick={() => setSelectedNavItem('federated')} href={`/${server ? server : defaultServer}/public`} width="inline" size="default">
+					<BiWorld className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'federated' })} />
+				</NavItem>
+				<div className="flex items-center justify-center mr-6">
+					<PopoverDemo />
+				</div>
+			</div>
+		</header>
+		</>
+	)
+};
 
 export default Nav;

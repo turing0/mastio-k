@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 
 interface Props {
+	onClick?: () => void;
 	href: string;
 	width: 'full' | 'inline' | 'mobile';
 	size: 'default' | 'small' | 'large';
@@ -32,8 +33,8 @@ const NavItemStyles = cva(
 	},
 );
 
-const NavItem = ({ href, children, width, size }: Props) => (
-	<Link className={NavItemStyles({ width, size })} href={href}>
+const NavItem = ({ onClick, href, children, width, size }: Props) => (
+	<Link onClick={onClick} className={NavItemStyles({ width, size })} href={href}>
 		{children}
 	</Link>
 );
